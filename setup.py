@@ -12,7 +12,7 @@ def _requires_from_file(filename):
 
 setup(
     name='mecab_functions',
-    version='1.0.0',
+    version='1.0.1',
     license='ライセンス',
     description='Mecabを使ったfunction',
     author='jarunga',
