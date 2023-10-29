@@ -8,8 +8,11 @@ CHASEN_ARGS += r' -U "%m\t%m\t%m\t%F-[0,1,2,3]\t\t\n"'
 TAGGER = MeCab.Tagger(ipadic.MECAB_ARGS + CHASEN_ARGS)
 
 def get_fullname(txt):
-    result=np.array([line.split() for line in TAGGER.parse(txt).splitlines() if re.search('人名\-名|人名\-姓',line.split()[-1])])
-
+    try:
+        result=np.array([line.split() for line in TAGGER.parse(txt).splitlines() if re.search('人名\-名|人名\-姓',line.split()[-1])])
+    except:
+        return None
+    
     if len(result)>0:
         pos=result[:,-1]
 
@@ -22,7 +25,10 @@ def get_fullname(txt):
         return None
 
 def get_lastname(txt):
-    result=np.array([line.split() for line in TAGGER.parse(txt).splitlines() if re.search('人名\-姓',line.split()[-1])])
+    try:
+        result=np.array([line.split() for line in TAGGER.parse(txt).splitlines() if re.search('人名\-姓',line.split()[-1])])
+    except:
+        return None
 
     if len(result)>0:
         pos=result[:,-1]
