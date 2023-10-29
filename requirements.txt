@@ -1,0 +1,3 @@
+mecab==0.996.3
+mecab-python3==1.0.6
+ipadic==1.0.0
